@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
   before_create :setup_game
   before_save   :serialize_game
 
+  validates :name, presence: true
+
   def hit!
     return false if winner
     player << deck.draw!
